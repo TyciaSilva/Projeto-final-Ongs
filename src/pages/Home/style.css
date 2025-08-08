@@ -2546,12 +2546,17 @@ body.text-size-1 { font-size: 1rem; }
 body.text-size-2 { font-size: 1.2rem; }
 body.text-size-3 { font-size: 1.5rem; }
 
-/* Foco visível global */
-body :focus {
+/* Foco visível global - SOMENTE QUANDO LEITOR DE VOZ ATIVO */
+body.speech-enabled :focus {
   outline: 3px solid #4a90e2;
   outline-offset: 2px;
 }
 
+body.speech-enabled .ong-card:focus {
+  box-shadow: 0 0 0 3px rgba(42, 122, 228, 0.5);
+}
+
+/* Painel de acessibilidade */
 .accessibility-container {
   position: fixed;
   bottom: 20px;
@@ -2721,6 +2726,8 @@ body :focus {
   border: 1px solid yellow;
 }
 
+
+
 /* Elementos escondidos visualmente */
 .sr-only {
   position: absolute;
@@ -2777,14 +2784,18 @@ body :focus {
   color: var(--primary-color);
 }
 
-/* Adicione ao seu CSS */
-:focus-visible {
+/* Removido o foco visível padrão */
+:focus {
+  outline: none;
+}
+
+/* Foco visível apenas quando leitor de voz ativo */
+body.speech-enabled :focus-visible {
   outline: 3px solid #2A7AE4;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-.ong-card:focus-visible {
+body.speech-enabled .ong-card:focus-visible {
   box-shadow: 0 0 0 3px rgba(42, 122, 228, 0.5);
 }
-
